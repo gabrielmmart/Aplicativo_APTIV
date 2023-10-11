@@ -1,0 +1,61 @@
+/* Main.css */
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: black; /* Set the black background for the whole page */
+  color: white; /* Set the text color to white */
+  margin-top: -20px; 
+}
+
+.secContent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.singleDestination {
+  border: none;
+  text-align: center;
+  background-color: transparent; /* Remove the background color */
+  overflow: hidden;
+}
+
+
+
+.singleDestination .imageDiv {
+  position: relative;
+  background-color: black;
+  border: 2px solid rgba(233, 14, 14, 0.945); /* Add a border to the image container */
+  border-radius: 200px; /* Create rounded corners for the image container */
+  padding: 10px; /* Add padding to create space between the border and image */
+  margin: 0 auto; /* Center the image container horizontally */
+  display: block;
+}
+
+
+.singleDestination .imageDiv:active {
+  transform: scale(0.95); /* Scale down when pressed */
+}
+
+.singleDestination .imageDiv img {
+  max-width: 100%; /* Limit the image's maximum width */
+  max-height: 100px; /* Set a predetermined height for the images */
+  display: block;
+}
+
+/* Main.css */
+
+.profileDiv {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px; /* Add spacing between the profile and the title */
+  padding-right: 30px;
+}
+
+.nomeDiv {
+  margin-top: 5px;
+}
+

@@ -1,0 +1,67 @@
+/* UserPage.css */
+
+.user-page {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    text-align: left;
+    margin-top: 70px;
+  }
+  
+  .user-dropdown {
+    margin-bottom: 20px;
+  }
+  
+  .user-info {
+    margin-top: 20px;
+    text-align: left;
+  }
+  
+  .add-user-button {
+    background-color: #db451f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .user-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  
+  .user-form label,
+  .user-form input {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .user-form button {
+    background-color: #0074d9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .user-list {
+    margin-top: 20px;
+  }
+  
+  .user-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .user-list li {
+    margin-bottom: 10px;
+  }
+  

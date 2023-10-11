@@ -1,0 +1,63 @@
+import React from "react";
+import './Main.css';
+import img from '../assets/unimedIcon.png';
+
+const Apps = [
+
+    {
+        id: 1,
+        imgSrc: img,
+        nomeApp: 'Unimed',
+        link: 'google.com'
+    },
+
+    {
+        id: 2,
+        imgSrc: img,
+        nomeApp: 'Hospitalloco',
+        link: 'google.com'
+    }
+
+]
+
+const Main = () => {
+    return (
+        <section className="main container section">
+
+            <div className="secTitle">
+                <h3 className="title">
+                    Aplicativos
+                </h3>
+            </div>
+
+            <div className="secContent grid">
+                {
+                    Apps.map(({id, imgSrc, nomeApp, link})=>{
+                        return(
+                            <div key={id}
+                            className="singleDestination">
+                                {/* return id from map array*/}
+
+                                <div className="imageDiv">
+                                    <img src={imgSrc} alt={nomeApp} />
+                                </div>
+
+                                <div className="nomeDiv">
+                                    <h4>
+                                        {nomeApp}
+                                    </h4>
+                                </div>
+                            </div>
+
+                            
+                        )
+                    })
+                }
+
+            </div>
+
+        </section>
+    )
+}
+
+export default Main;

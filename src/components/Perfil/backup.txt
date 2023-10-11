@@ -1,0 +1,89 @@
+/*
+    <div className="profile">
+    <img src={Img} alt="Profile" className="profile-picture" />
+      <div className="profile-header">
+        <div className="profile-info">
+          <h3>Gabriel Medeiros</h3>
+          <p>gabriel.medeiros@ges.inatel.br</p>
+        </div>
+      </div>
+      <button className="profile-button" onClick={toggleCollapse}>
+          {isCollapsed ? "Mostrar mais" : "Esconder"}
+        </button>
+      {!isCollapsed && (
+        <div className="profile-details">
+           Add more user details here 
+          <p style={{ color: "black" }}>Idade: 23</p>
+          <p style={{ color: "black" }}>Planta: Itajuba</p>
+
+        </div>
+      )}
+    </div>
+    */
+
+    /* Profile.css */
+
+.profile {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 410px;
+    margin: 20px;
+    text-align: center;
+  }
+  
+  .profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-info {
+    text-align: center;
+    margin-left: 58px;
+    
+  }
+  
+  .profile-info h3 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: #333;
+  }
+  
+  .profile-info p {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .profile-button {
+    background-color: rgb(234, 62, 24);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .profile-button:hover {
+    background-color: rgb(202, 37, 0);
+  }
+  
+  .profile-details {
+    background-color: white;
+    text-align: left;
+    padding-top: 10px;
+  }
+  
+  /* Add more styling as needed */
+  
