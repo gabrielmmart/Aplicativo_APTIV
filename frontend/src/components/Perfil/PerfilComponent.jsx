@@ -20,7 +20,7 @@ function Profile({ user }) {
                 gabriel.medeiros@ges.inatel.br
             </div>
             <button className="profile-button" onClick={toggleCollapse}>
-                {isCollapsed ? "Mostrar mais" : "Esconder"}
+                {isCollapsed ? "Mais informações" : "Esconder"}
             </button>
             {!isCollapsed && (
             <div className="profile-details">
