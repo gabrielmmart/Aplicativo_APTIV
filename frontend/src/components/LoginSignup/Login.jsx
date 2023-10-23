@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Login.css'; // Import your CSS file here if needed
 import { Navigate } from 'react-router-dom';
-import {Switch} from "antd"
 
 function Login() {
 
@@ -34,11 +33,7 @@ function Login() {
             </h1>
             <div>Entrar como:</div>
 
-            <Switch
-              defaultChecked={true}
-              checkedChildren="Usuário"
-              unCheckedChildren="Administrador"
-            />
+
 
             <div className="input-box">
               <input type="text" placeholder="Registro" required />

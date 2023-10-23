@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 
-const appSchema = mongoose.Schema({
+const atalhoSchema = mongoose.Schema({
   imgSrc:{ 
     type: String,
     required: true,
@@ -16,4 +16,4 @@ const appSchema = mongoose.Schema({
 }
 );
 
-export const AppModel = mongoose.model('App', appSchema)
+export const AtalhoModel = mongoose.model('Atalho', atalhoSchema)

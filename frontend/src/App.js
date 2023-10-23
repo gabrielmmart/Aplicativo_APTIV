@@ -6,6 +6,7 @@ import OldMain from './components/OldMainPage/OldMain';
 import AdminPage from './components/AdminPageC/AdminPage'
 import UsuariosPage from './components/UsuariosPage/Usuarios';
 import AtalhosPage from './components/AtalhosPage/Atalhos';
+import Teste from './components/TESTE/Teste';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path='/Admin' element={<AdminPage/>} />
           <Route path='/usuarios' element={<UsuariosPage />} />
           <Route path='/atalhos' element={<AtalhosPage/>} />
+          <Route path='/Teste' element={<Teste/>} />
         </Routes>
       </Router>
     </div>

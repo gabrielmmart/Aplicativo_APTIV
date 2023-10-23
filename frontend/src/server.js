@@ -14,8 +14,8 @@ mongoose.connect('your-mongodb-connection-url', { useNewUrlParser: true, useUnif
   .catch(err => console.log(err));
 
 // API routes for storing and fetching data
-const appRoutes = require('./routes/appRoutes');
-app.use('/api/apps', appRoutes);
+const atalhosRoutes = require('../backend/routes/atalhosRoute');
+app.use('/Atalhos', atalhosRoutes);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
