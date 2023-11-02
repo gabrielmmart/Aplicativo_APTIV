@@ -52,15 +52,39 @@
   margin-top: 10px;
 }
 
-.app-list {
+
+.atalhos-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; 
+}
+
+.atalho-item {
+  background-color: #d6d6d6; 
+  border-radius: 10px; 
+  padding: 20px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  flex: 1;
+  max-width: 100; 
+  text-align: center; 
+}
+
+.botaoEditar {
+  background-color: #db451f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
   margin-top: 20px;
 }
 
-.app-list ul {
-  list-style: none;
-  padding: 0;
-}
-
-.app-list li {
-  margin-bottom: 10px;
+.botaoDeletar {
+  background-color: #db451f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 20px;
 }

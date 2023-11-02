@@ -6,13 +6,13 @@ import * as IoIcons from "react-icons/io"
 export const SideBarData = [
     {
         title: 'Usuarios',
-        path: '/usuarios',
+        path: '/addUsuarios',
         icon: <AiIcons.AiFillHome />,
         cName: 'nav-text'
     },
     {
         title: 'Atalhos',
-        path: '/atalhos',
+        path: '/addAtalhos',
         icon: <FaIcons.FaCartPlus />,
         cName: 'nav-text'
     }

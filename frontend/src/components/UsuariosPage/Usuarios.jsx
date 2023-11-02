@@ -10,7 +10,7 @@ function UsuarioPage() {
     lastName: '',
     email: '',
     isAdmin: false,
-    profileImage: null, // Added profileImage property
+    profileImage: null, 
   });
   const [users, setUsers] = useState([]);
   const [editMode, setEditMode] = useState(false);

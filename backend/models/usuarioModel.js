@@ -1,6 +1,14 @@
 import mongoose from "mongoose"
 
 const usuarioSchema = mongoose.Schema({
+  login:{ 
+    type: String,
+    required: true,
+  },
+  senha:{ 
+    type: String,
+    required: true,
+  },
   nome:{ 
     type: String,
     required: true,
@@ -10,6 +18,10 @@ const usuarioSchema = mongoose.Schema({
     required: true,
   },
   email:{
+    type: String,
+    required: true 
+  },
+  cargo:{
     type: String,
     required: true 
   },
@@ -25,6 +37,10 @@ const usuarioSchema = mongoose.Schema({
     type: String,
     required: true 
   },
+  admin:{
+    type: Boolean,
+    required: true 
+  }
 }
 );
 

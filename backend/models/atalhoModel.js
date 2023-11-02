@@ -1,10 +1,7 @@
 import mongoose from "mongoose"
 
 const atalhoSchema = mongoose.Schema({
-  imgSrc:{ 
-    type: String,
-    required: true,
-  },
+
   nomeApp:{
     type: String,
     required: true,
@@ -12,6 +9,9 @@ const atalhoSchema = mongoose.Schema({
   link:{
     type: String,
     required: true 
+  },  imgSrc:{ 
+    type: String,
+    required: true,
   }
 }
 );

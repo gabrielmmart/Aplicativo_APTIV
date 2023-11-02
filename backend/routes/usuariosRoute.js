@@ -7,27 +7,35 @@ const router = express.Router();
 router.post('/', async (request, response) => {
   try {
     const {
+      login,
+      senha,
       nome,
       sobrenome,
       email,
       planta,
       acessoKPI,
       foto,
+      admin,
+      cargo
     } = request.body;
 
-    if (!nome || !sobrenome || !email || !planta || acessoKPI === undefined || foto === undefined) {
+    if (!login || !senha || !nome || !sobrenome || !email || !planta || !cargo || acessoKPI === undefined || admin === undefined || foto === undefined) {
       return response.status(400).json({
         message: 'Send all required fields: nome, sobrenome, email, planta, acessoKPI, foto',
       });
     }
 
     const newUsuario = await UsuarioModel.create({
+      login,
+      senha,
       nome,
       sobrenome,
       email,
       planta,
       acessoKPI,
       foto,
+      admin,
+      cargo
     });
 
     return response.status(201).json(newUsuario);

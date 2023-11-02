@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './PerfilComponent.css'; // Import your CSS file here
+import './PerfilComponent.css';
 import Img from './Perfil.png'
 
 function Profile({ user }) {

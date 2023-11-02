@@ -1,4 +1,4 @@
-import './AdminPage.css'; // Import your CSS file here
+import './AdminPage.css';
 import Sidebar from "../SidebarC/Sidebar";
 
 function AdminPage() {
