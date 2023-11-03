@@ -1,5 +1,3 @@
-/* Atalhos.css */
-
 .app-page {
   max-width: 400px;
   margin: 0 auto;
@@ -10,7 +8,14 @@
   margin-top: 70px;
 }
 
-
+.mais {
+  color: orangered;
+  margin-left: 320px;
+}
+.mais:hover {
+  color: darkred;
+  margin-left: 320px;
+}
 
 .atalhos-container {
   display: flex;
@@ -42,12 +47,13 @@
 
 .imagem {
   flex: 1;
-  padding: 10px;
+
 }
 
 .texto {
   flex: 2;
   padding: 10px;
+  margin-left: 20px;
 }
 
 .icons {
@@ -58,7 +64,17 @@
 
 .icon {
   color: white;
-  margin-left: 10px;
+  margin-left: 20px;
+}
+.icon:hover {
+  color: rgb(197, 197, 197)
 }
 
-/* Additional styling as needed */
+.link-container {
+  max-width: 50px; 
+  overflow-x: auto; 
+}
+
+.link {
+  text-decoration: none;
+}

@@ -1,0 +1,16 @@
+.voltarButton {
+    background-color: rgb(255, 60, 0); /* Set the background color to orange */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Adjust padding for better appearance */
+    border: none; /* Remove default button border */
+    border-radius: 5px; /* Add rounded corners */
+    cursor: pointer; /* Add a pointer cursor for hover effect */
+    text-decoration: none; /* Remove underlines */
+    font-weight: bold; /* Make the text bold */
+    transition: background-color 0.3s; /* Add a smooth color transition */
+  }
+  
+  .voltarButton:hover {
+    background-color: rgb(202, 48, 20); /* Change the color on hover */
+  }
+  

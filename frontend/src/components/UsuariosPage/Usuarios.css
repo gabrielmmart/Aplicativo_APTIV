@@ -1,66 +1,158 @@
-/* UserPage.css */
+/* usuarios.css */
 
-.user-page {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
+.usuario-app-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #f0f0f0;
-  border-radius: 10px;
-  text-align: left;
-  margin-top: 70px;
-}
-
-.user-dropdown {
-  margin-bottom: 20px;
-}
-
-.user-info {
-  margin-top: 20px;
-  text-align: left;
-}
-
-.add-user-button {
-  background-color: #db451f;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-.user-form {
-  background-color: #fff;
   padding: 20px;
-  border-radius: 5px;
-  margin-top: 20px;
 }
 
-.user-form label,
-.user-form input {
+h1 {
+  font-size: 24px;
+  margin: 20px 0;
+  color: #333;
+}
+
+.usuarios-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.usuario-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin: 5px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.usuario-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* usuarios.css */
+
+.usuario-imagem {
+  flex: 1;
+  padding: 10px;
+  position: relative;
+}
+
+.usuario-imagem img {
+  max-width: 100px;
+  max-height: 100px;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.usuario-imagem:before {
+  content: "";
   display: block;
-  margin-bottom: 10px;
+  padding-bottom: 100px; /* 1:1 aspect ratio (change this value as needed) */
 }
 
-.user-form button {
-  background-color: #0074d9;
-  color: white;
+
+/* usuarios.css */
+
+/* ... (previous CSS styles) */
+
+.usuario-text-container {
+  flex: 3;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow-x: auto; /* Enable horizontal scrolling if content overflows */
+  white-space: nowrap; /* Prevent line breaks for the content */
+}
+
+.usuario-texto {
+  font-size: 18px;
+  color: #333;
+  padding: 0 10px; /* Add padding to separate attributes */
+}
+
+/* ... (previous CSS styles) */
+
+
+.usuario-icons {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.usuario-icon {
+  margin-left: 10px;
+  color: #333;
+  text-decoration: none;
+}
+
+.usuario-icon:hover {
+  color: #ff6347; /* Orange color on hover */
+}
+
+.mais {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ff6347; /* Orange background for the plus button */
+  color: #fff;
   border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-  margin-top: 10px;
+  border-radius: 50%; /* Make it a circle */
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
 }
 
-.user-list {
-  margin-top: 20px;
+.mais:hover {
+  background-color: #ff4500; /* Darker orange on hover */
+}
+/* usuarios.css */
+
+/* ... (previous CSS styles) */
+
+.usuarios-table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.user-list ul {
-  list-style: none;
-  padding: 0;
+.usuarios-table thead {
+  background-color: #f0f0f0;
+  color: #333;
 }
 
-.user-list li {
-  margin-bottom: 10px;
+.usuarios-table th, .usuarios-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
 }
+
+.usuario-imagem img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 50%; /* Rounded user images */
+}
+
+.usuario-text-container {
+  overflow-x: auto;
+}
+
+/* ... (previous CSS styles) */

@@ -2,14 +2,6 @@
   color: aliceblue;
 }
 
-.centered-input {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px 0;
-  color: aliceblue;
-}
-
 .app-form {
   display: flex;
   flex-direction: column;
@@ -53,7 +45,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Ensures the image stays within the circle */
+  overflow: hidden;
 }
 
 /* Style the image inside the circular container */

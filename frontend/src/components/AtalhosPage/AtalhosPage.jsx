@@ -3,7 +3,7 @@ import './AtalhosPage.css';
 import Sidebar from '../SidebarC/Sidebar';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { FaTrash, FaPencilAlt } from 'react-icons/fa';
+import { FaTrash, FaPencilAlt, FaPlusSquare } from 'react-icons/fa';
 
 function AtalhosPage() {
 
@@ -27,11 +27,11 @@ function AtalhosPage() {
       <Sidebar />
       
       <div className="app-page">
-
-        <Link to='/Atalhos/Create'>
-          <button className='add-app-button'>Criar novo atalho</button>
+        
+        <Link to='/Atalhos/Create' className='mais'> 
+          <FaPlusSquare size={25} />
         </Link>
-
+    
         <h1>Atalhos cadastrados</h1>
         <div className="atalhos-container">
           {atalhos &&
@@ -45,18 +45,22 @@ function AtalhosPage() {
                   </div>
                   <div className='text-container'>
                     <div className='texto'>{atalho.nomeApp}</div>
-                    <a className='texto' href={atalho.link} target="_blank" rel="noopener noreferrer">
-                      {atalho.link}
-                    </a>
+                    {/*
+                    <div className='link-container'>
+                      <a className='link' href={atalho.link} target="_blank" rel="noopener noreferrer">
+                        {atalho.link}
+                      </a>
+                    </div>
+                    */}
                   </div>
                   <div className='icons'>
-                    <div className='icon'>
-                      <a href={`/Atalhos/Edit/${atalho._id}`}>
+                    <div >
+                      <a className='icon' href={`/Atalhos/Edit/${atalho._id}`}>
                         <FaPencilAlt />
                       </a>
                     </div>
-                    <div className='icon'>
-                      <a href={`/Atalhos/Delete/${atalho._id}`}>
+                    <div>
+                      <a className='icon' href={`/Atalhos/Delete/${atalho._id}`}>
                         <FaTrash />
                       </a>
                     </div>

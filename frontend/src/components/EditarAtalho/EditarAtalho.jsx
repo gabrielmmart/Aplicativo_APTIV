@@ -16,13 +16,13 @@ const EditarAtalho = () => {
     useEffect(() => {
         axios.get(`http://localhost:5555/Atalhos/${id}`)
             .then((response) => {
-                setAtalho(response.data); // Populate the form with existing data
-                // Set the initial state of newAtalho with the existing data
+                setAtalho(response.data);
                 setNewAtalho({
                     nomeApp: response.data.nomeApp,
                     imgSrc: response.data.imgSrc,
                     link: response.data.link,
                 });
+                setImage(response.data.imgSrc);
             })
             .catch((error) => {
                 alert('Ocorreu um erro, por favor cheque o console');
@@ -63,34 +63,36 @@ const EditarAtalho = () => {
     return (
         <form className="app-form" onSubmit={handleFormSubmit}>
             <BackButton />
-            <h2 className='texto'>Editar os dados do aplicativo</h2>
-            <label className='texto'>Ícone:</label>
-            <div className="image-container">
-                {image === "" || image === null ? "" : <img width={100} height={100} src={image} />}
-            </div>
-            <div className="centered-input">
+            <div className='aqaa'>
+                <h2 className='texto'>Editar os dados do aplicativo</h2>
+                <label className='texto'>Ícone:</label>
+                <div className="image-container">
+                    {image === "" || image === null ? "" : <img width={100} height={100} src={image} />}
+                </div>
+                <div className="centered-input">
+                    <input
+                        accept="image/*"
+                        type="file"
+                        onChange={convertToBase64}
+                    />
+                </div>
+                <label className='texto'>Nome do atalho:</label>
                 <input
-                    accept="image/*"
-                    type="file"
-                    onChange={convertToBase64}
+                    type="text"
+                    placeholder="Nome App"
+                    value={newAtalho.nomeApp}
+                    onChange={(e) => setNewAtalho({ ...newAtalho, nomeApp: e.target.value })}
                 />
+                <label className='texto'>Endereço (Link):</label>
+                <input
+                    type="text"
+                    placeholder="Link"
+                    value={newAtalho.link}
+                    onChange={(e) => setNewAtalho({ ...newAtalho, link: e.target.value })}
+                />
+                <div className="error-message">{errorMessage}</div>
+                <button type="submit">Concluir</button>
             </div>
-            <label className='texto'>Nome do atalho:</label>
-            <input
-                type="text"
-                placeholder="Nome App"
-                value={newAtalho.nomeApp}
-                onChange={(e) => setNewAtalho({ ...newAtalho, nomeApp: e.target.value })}
-            />
-            <label className='texto'>Endereço (Link):</label>
-            <input
-                type="text"
-                placeholder="Link"
-                value={newAtalho.link}
-                onChange={(e) => setNewAtalho({ ...newAtalho, link: e.target.value })}
-            />
-            <div className="error-message">{errorMessage}</div>
-            <button type="submit">Concluir</button>
         </form>
     );
 };

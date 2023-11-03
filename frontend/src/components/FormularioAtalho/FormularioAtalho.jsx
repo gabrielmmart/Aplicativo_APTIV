@@ -47,37 +47,38 @@ const FormularioAtalho = () => {
         <form className="app-form" onSubmit={handleFormSubmit}>
 
             <BackButton />
-
-            <h2 className='texto'>Entre com os dados do aplicativo</h2>
-            <label className='texto'>Ícone:</label>
-            
-            <div className="image-container">
-                {image === "" || image === null ? "" : <img width={100} height={100} src={image} />}
+            <div className='oiii'>
+                <h2 className='texto'>Entre com os dados do aplicativo</h2>
+                <label className='texto'>Ícone:</label>
+                
+                <div className="image-container">
+                    {image === "" || image === null ? "" : <img width={100} height={100} src={image} />}
+                </div>
+                <div className="centered-input">
+                <input
+                    accept="image/*" 
+                    type="file" 
+                    onChange={convertToBase64}
+                />
+                </div>
+                <label className='texto'>Nome do atalho:</label>
+                <input
+                type="text"
+                placeholder="Nome App"
+                value={newAtalho.nomeApp}
+                onChange={(e) => setNewAtalho({ ...newAtalho, nomeApp: e.target.value })}
+                />
+                <label className='texto'>Endereço (Link):</label>
+                <input
+                type="text"
+                placeholder="Link"
+                value={newAtalho.link}
+                onChange={(e) => setNewAtalho({ ...newAtalho, link: e.target.value })}
+                />
+                <div className="error-message">{errorMessage}</div> {/* Display error message */}
+                <button onClick={handleFormSubmit}>Concluir</button>
             </div>
-            <div className="centered-input">
-            <input
-                accept="image/*" 
-                type="file" 
-                onChange={convertToBase64}
-            />
-            </div>
-            <label className='texto'>Nome do atalho:</label>
-            <input
-              type="text"
-              placeholder="Nome App"
-              value={newAtalho.nomeApp}
-              onChange={(e) => setNewAtalho({ ...newAtalho, nomeApp: e.target.value })}
-            />
-            <label className='texto'>Endereço (Link):</label>
-            <input
-              type="text"
-              placeholder="Link"
-              value={newAtalho.link}
-              onChange={(e) => setNewAtalho({ ...newAtalho, link: e.target.value })}
-            />
-            <div className="error-message">{errorMessage}</div> {/* Display error message */}
-            <button onClick={handleFormSubmit}>Concluir</button>
-          </form>
+        </form>
     );
 };
 
