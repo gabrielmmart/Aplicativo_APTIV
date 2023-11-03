@@ -44,7 +44,7 @@ function UsuarioPage() {
                     )}
                   </div>
                   <div className='usuario-text-container'>
-                    <div className='usuario-texto'>{usuario.nome} {usuario.sobrenome} {usuario.email} {usuario.cargo} {usuario.planta}</div>
+                    <div className='usuario-texto'>{usuario.nome} {usuario.sobrenome} {usuario.email} {usuario.cargo} {usuario.planta}  </div>
                     
                     {/*
                     <div className='link-container'>
