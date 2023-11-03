@@ -34,42 +34,37 @@ function UsuarioPage() {
     
         <h1>Usuarios cadastrados</h1>
         <div className="usuarios-container">
-          {usuarios &&
-            usuarios.map((usuario) => (
-              <div className="usuario-item" key={usuario._id}>
-                <div className="usuario-content">
-                  <div className='usuario-imagem'>
-                    {usuario.foto === "" || usuario.foto === null ? null : (
-                      <img width={100} height={100} src={usuario.foto} alt={usuario.nome} />
-                    )}
-                  </div>
-                  <div className='usuario-text-container'>
-                    <div className='usuario-texto'>{usuario.nome} {usuario.sobrenome} {usuario.email} {usuario.cargo} {usuario.planta}  </div>
-                    
-                    {/*
-                    <div className='link-container'>
-                      <a className='link' href={usuario.link} target="_blank" rel="noopener noreferrer">
-                        {usuario.link}
-                      </a>
-                    </div>
-                    */}
-                  </div>
-                  <div className='usuario-icons'>
-                    <div >
-                      <a className='usuario-icon' href={`/Usuarios/Edit/${usuario._id}`}>
-                        <FaPencilAlt />
-                      </a>
-                    </div>
-                    <div>
-                      <a className='usuario-icon' href={`/Usuarios/Delete/${usuario._id}`}>
-                        <FaTrash />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-        </div>
+  <table className="usuarios-table">
+    <thead>
+      <tr>
+        <th>Usuario</th>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Email</th> 
+        <th>Cargo</th> 
+        <th>Planta</th> 
+      </tr>
+    </thead>
+    <tbody>
+      {usuarios &&
+        usuarios.map((usuario) => (
+          <tr key={usuario._id}>
+            <td className='usuario-imagem'>
+              {usuario.foto === "" || usuario.foto === null ? null : (
+                <img width={100} height={100} src={usuario.foto} alt={usuario.nome} />
+              )}
+            </td>
+            <td>{usuario.nome}</td>
+            <td>{usuario.sobrenome}</td>
+            <td>{usuario.email}</td>
+            <td>{usuario.cargo}</td>
+            <td>{usuario.planta}</td>
+          </tr>
+        ))}
+    </tbody>
+  </table>
+</div>
+
       </div>
     </div>
   );
