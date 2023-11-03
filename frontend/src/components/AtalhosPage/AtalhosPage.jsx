@@ -3,14 +3,11 @@ import './AtalhosPage.css';
 import Sidebar from '../SidebarC/Sidebar';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { FaTrash, FaPencilAlt } from 'react-icons/fa';
 
 function AtalhosPage() {
-  const [showForm, setShowForm] = useState(false);
+
   const [atalhos, setAtalhos] = useState([]);
-  const [image, setImage] = useState("");
-  const [newAtalho, setNewAtalho] = useState({ nomeApp: '', imgSrc: '', link: '' });
-  const [editingAtalho, setEditingAtalho] = useState(null);
-  const [isEditing, setIsEditing] = useState(false);
   
   useEffect(() => {
     // Fetch Atalhos data when the component mounts
@@ -35,29 +32,38 @@ function AtalhosPage() {
           <button className='add-app-button'>Criar novo atalho</button>
         </Link>
 
-      <h1>Atalhos cadastrados</h1>
+        <h1>Atalhos cadastrados</h1>
         <div className="atalhos-container">
           {atalhos &&
-              atalhos.map((atalho) => (
-                <div className="atalho-item" key={atalho._id}>                
-                  {atalho.imgSrc === "" || atalho.imgSrc === null ? null : (
-                    <img width={100} height={100} src={atalho.imgSrc} alt={atalho.nomeApp} />
-                  )}
-                  <p>{atalho.nomeApp}</p>
-                  <a href={atalho.link} target="_blank" rel="noopener noreferrer">
-                    {atalho.link}
-                  </a>
-                  <p>
-                    <Link to={`/Atalhos/Edit/${atalho._id}`}>
-                      <button className='botaoEditar'>Editar</button>
-                    </Link> 
-                    <Link to={`/Atalhos/Delete/${atalho._id}`}>
-                      <button className='botaoDeletar'>deletar</button>
-                    </Link> 
-                  </p>
-                  
+            atalhos.map((atalho) => (
+              <div className="atalho-item" key={atalho._id}>
+                <div className="content">
+                  <div className='imagem'>
+                    {atalho.imgSrc === "" || atalho.imgSrc === null ? null : (
+                      <img width={100} height={100} src={atalho.imgSrc} alt={atalho.nomeApp} />
+                    )}
+                  </div>
+                  <div className='text-container'>
+                    <div className='texto'>{atalho.nomeApp}</div>
+                    <a className='texto' href={atalho.link} target="_blank" rel="noopener noreferrer">
+                      {atalho.link}
+                    </a>
+                  </div>
+                  <div className='icons'>
+                    <div className='icon'>
+                      <a href={`/Atalhos/Edit/${atalho._id}`}>
+                        <FaPencilAlt />
+                      </a>
+                    </div>
+                    <div className='icon'>
+                      <a href={`/Atalhos/Delete/${atalho._id}`}>
+                        <FaTrash />
+                      </a>
+                    </div>
+                  </div>
                 </div>
-              ))}
+              </div>
+            ))}
         </div>
       </div>
     </div>
