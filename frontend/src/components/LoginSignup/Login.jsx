@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom';
 function Login() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [isAdmin, setIsAdmin] = useState(false);
   useEffect(() => {
     // Add the class when the component mounts
     document.body.classList.add('login-background');
@@ -22,8 +22,13 @@ function Login() {
 
 
   if (isLoggedIn) {
-    return <Navigate to='/Main' />;
-  } else {
+    if(isAdmin){
+      return <Navigate to='/Admin'/>
+    }
+    else {
+      return <Navigate to='/Main' />;
+    }
+    } else {
     return (
       <body class="login-page">
         <div className="wrapper">
@@ -43,6 +48,9 @@ function Login() {
             </div>
 
             <div className="remember-forgot">
+              <label>
+                <input type="checkbox" onChange={() => setIsAdmin(!isAdmin)} /> Entrar como Admin
+              </label>
               <label>
                 <input type="checkbox" /> Lembrar senha
               </label>
