@@ -29,7 +29,7 @@ function AtalhosPage() {
       <div className="app-page">
         
         <Link to='/Atalhos/Create' className='mais'> 
-          <FaPlusSquare size={25} />
+          <FaPlusSquare size={50} />
         </Link>
     
         <h1>Atalhos cadastrados</h1>

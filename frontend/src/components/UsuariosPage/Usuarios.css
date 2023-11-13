@@ -112,7 +112,6 @@ h1 {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  background-color: #ff6347; /* Orange background for the plus button */
   color: #fff;
   border: none;
   border-radius: 50%; /* Make it a circle */
@@ -120,13 +119,6 @@ h1 {
   text-align: center;
   text-decoration: none;
 }
-
-.mais:hover {
-  background-color: #ff4500; /* Darker orange on hover */
-}
-/* usuarios.css */
-
-/* ... (previous CSS styles) */
 
 .usuarios-table {
   width: 100%;

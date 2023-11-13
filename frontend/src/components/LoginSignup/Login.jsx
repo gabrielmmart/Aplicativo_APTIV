@@ -29,11 +29,9 @@ function Login() {
         <div className="wrapper">
           <form action="">
             <h1>
-              <span style={{ color: 'rgb(255, 51, 0)' }}>Info</span>APTIV
+              <span style={{ color: 'rgb(255, 62, 24)' }}>Info<font color="white">APTIV</font></span>
             </h1>
             <div>Entrar como:</div>
-
-
 
             <div className="input-box">
               <input type="text" placeholder="Registro" required />
@@ -56,7 +54,8 @@ function Login() {
             </button>
 
             <h1>
-              <span style={{ color: 'rgb(234, 62, 24)' }}>•</span>APTIV
+              <span style={{ color: 'rgb(234, 62, 24)' }}>•</span>
+              <span style={{ color: 'white'}}>APTIV</span>
               <span style={{ color: 'rgb(234, 62, 24)' }}>•</span>
             </h1>
           </form>
