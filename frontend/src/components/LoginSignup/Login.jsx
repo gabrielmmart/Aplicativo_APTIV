@@ -33,33 +33,34 @@ function Login() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ login: username, senha: password}),
+        body: JSON.stringify({ login: username, senha: password }),
       });
   
       if (response.ok) {
         // Successful login
         const data = await response.json();
-        console.log(data);
         console.log('Data from server:', data);
-
+  
         if (isAdmin) {
-          if (data.user && data.user.admin === true) {
+          if (data.isAdmin) {
             navigate('/Admin');
           } else {
-            console.log('is not allowed');
+            console.log('Admin login is not allowed');
           }
         } else {
           navigate('/Main');
         }
-
       } else {
+        // Unsuccessful login
         console.error('Invalid username or password');
+        // Optionally, display an error message to the user or handle it in another way
       }
     } catch (error) {
       console.error('Error during login:', error.message);
       // Handle other errors (e.g., network issues)
     }
   };
+  
   
 
   return (

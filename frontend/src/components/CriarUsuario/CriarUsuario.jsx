@@ -1,66 +1,94 @@
 import './CriarUsuario.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../BackButton/BackButton';
 
 const Formulariousuario = () => {
-    const [usuarios, setUsuarios] = useState([]);
-    const [image, setImage] = useState("");
-    const [newUsuario, setNewUsuario] = useState({ nome: '', sobrenome: '', email: '', cargo: '', planta: '', acessoKPI: '', admin: '', foto: '', login: '', senha:'' });
-    const navigate = useNavigate(); 
-    const [errorMessage, setErrorMessage] = useState(""); 
+  const [newUsuario, setNewUsuario] = useState({
+    nome: '',
+    sobrenome: '',
+    email: '',
+    cargo: '',
+    planta: '',
+    acessoKPI: false,
+    admin: false,
+    foto: '',
+    login: '',
+    senha: ''
+  });
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
-    function convertFotoToBase64(e) {
-        const reader = new FileReader();
-        reader.readAsDataURL(e.target.files[0]);
-        reader.onload = () => {
-            setImage(reader.result);
-            setNewUsuario({ ...newUsuario, foto: reader.result });
+  const convertFotoToBase64 = (e) => {
+    const file = e.target.files[0];
+  
+    if (file) {
+      const reader = new FileReader();
+  
+      reader.onload = (readerEvent) => {
+        const image = new Image();
+        image.src = readerEvent.target.result;
+  
+        image.onload = () => {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+  
+          // Resize the image to 500x500 pixels
+          canvas.width = 500;
+          canvas.height = 500;
+          ctx.drawImage(image, 0, 0, 500, 500);
+  
+          // Convert the canvas content to base64
+          const resizedBase64 = canvas.toDataURL('image/jpeg');
+  
+          setNewUsuario({ ...newUsuario, foto: resizedBase64 });
         };
-        reader.onerror = error => {
-            console.log("Error", error);
-        };
+      };
+  
+      reader.readAsDataURL(file);
+    }
+  };  
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+
+    if (
+      !newUsuario.nome ||
+      !newUsuario.sobrenome ||
+      !newUsuario.email ||
+      !newUsuario.cargo ||
+      !newUsuario.planta ||
+      !newUsuario.login ||
+      !newUsuario.senha ||
+      !newUsuario.foto
+    ) {
+      setErrorMessage('Preencha todos os campos');
+      return;
     }
 
-    const handleFormSubmit = (event) => {
-        event.preventDefault();
+    axios
+      .post('http://localhost:5555/Usuarios', newUsuario)
+      .then(() => {
+        navigate('/Addusuarios');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-        if (!newUsuario.nome || !newUsuario.sobrenome || !newUsuario.email || !newUsuario.cargo || !newUsuario.planta || newUsuario.acessoKPI === false ||  newUsuario.admin === false || !newUsuario.login || !newUsuario.senha ||   !newUsuario.foto) {
-            setErrorMessage("Preencha todos os campos");
-            return;
-        }
-
-        axios
-        .post('http://localhost:5555/Usuarios', newUsuario)
-        .then((response) => {
-            setUsuarios([...usuarios, response.data]);
-            navigate('/Addusuarios');
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-      };
-
-    return (
-        
-        <form className="usuario-app-form" onSubmit={handleFormSubmit}>
-
-            <BackButton />
-            <div className='usuario-oiii'>
-                <h2 className='usuario-texto'>Entre com os dados do usuário</h2>
-                <label className='usuario-texto'>Foto:</label>
-                
-                <div className="usuario-image-container">
-                    {image === "" || image === null ? "" : <img width={100} height={100} src={image} />}
-                </div>
-                <div className="usuario-centered-input">
-                <input
-                    accept="image/*" 
-                    type="file" 
-                    onChange={convertFotoToBase64}
-                />
-                </div>
+  return (
+    <form className="usuario-app-form" onSubmit={handleFormSubmit}>
+      <BackButton />
+      <div className="usuario-oiii">
+        <h2 className="usuario-texto">Entre com os dados do usuário</h2>
+        <label className="usuario-texto">Foto:</label>
+        <div className="usuario-image-container">
+          {newUsuario.foto && <img width={100} height={100} src={newUsuario.foto} alt="User" />}
+        </div>
+        <div className="usuario-centered-input">
+          <input accept="image/*" type="file" onChange={convertFotoToBase64} />
+        </div>
                 
                 <label className='usuario-texto'>Nome:</label>
                 <input

@@ -12,16 +12,35 @@ const FormularioAtalho = () => {
     const [errorMessage, setErrorMessage] = useState(""); 
 
     function convertToBase64(e) {
-        const reader = new FileReader();
-        reader.readAsDataURL(e.target.files[0]);
-        reader.onload = () => {
-            setImage(reader.result);
-            setNewAtalho({ ...newAtalho, imgSrc: reader.result });
-        };
-        reader.onerror = error => {
-            console.log("Error", error);
-        };
-    }
+        const file = e.target.files[0];
+        
+        if (file) {
+            const reader = new FileReader();
+        
+            reader.onload = (readerEvent) => {
+            const image = new Image();
+            image.src = readerEvent.target.result;
+        
+            image.onload = () => {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+        
+                // Resize the image to 500x500 pixels
+                canvas.width = 500;
+                canvas.height = 500;
+                ctx.drawImage(image, 0, 0, 500, 500);
+        
+                // Convert the canvas content to base64
+                const resizedBase64 = canvas.toDataURL('image/jpeg');
+        
+                setImage(resizedBase64);
+                setNewAtalho({ ...newAtalho, imgSrc: resizedBase64 });
+            };
+            };
+        
+            reader.readAsDataURL(file);
+        }
+    }      
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
