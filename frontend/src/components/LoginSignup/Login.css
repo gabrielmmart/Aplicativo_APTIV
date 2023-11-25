@@ -7,14 +7,14 @@
     font-family: "Poppins", sans-serif;
 }
 
-body.login-page {
+.login-page {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
 }
 
-body.login-background {
+.login-background {
     background-image: url(carraonaestrada.png);
     background-size: cover;
     background-repeat: no-repeat;

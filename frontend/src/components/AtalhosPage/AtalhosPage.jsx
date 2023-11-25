@@ -45,13 +45,6 @@ function AtalhosPage() {
                   </div>
                   <div className='text-container'>
                     <div className='texto'>{atalho.nomeApp}</div>
-                    {/*
-                    <div className='link-container'>
-                      <a className='link' href={atalho.link} target="_blank" rel="noopener noreferrer">
-                        {atalho.link}
-                      </a>
-                    </div>
-                    */}
                   </div>
                   <div className='icons'>
                     <div >

@@ -1,51 +1,89 @@
 import express from 'express';
-import { UsuarioModel } from '../models/usuarioModel.js'; // Correctly import UsuarioModel
-
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import { UsuarioModel } from '../models/usuarioModel.js';
 const router = express.Router();
 
 // POST route for creating a new usuario
-router.post('/', async (request, response) => {
+router.post('/', async (req, res) => {
   try {
-    const {
-      login,
-      senha,
-      nome,
-      sobrenome,
-      email,
-      planta,
-      acessoKPI,
-      foto,
-      admin,
-      cargo
-    } = request.body;
+      const {
+          login,
+          senha,
+          nome,
+          sobrenome,
+          email,
+          planta,
+          acessoKPI,
+          foto,
+          admin,
+          cargo
+      } = req.body;
 
-    if (!login || !senha || !nome || !sobrenome || !email || !planta || !cargo || acessoKPI === undefined || admin === undefined || foto === undefined) {
-      return response.status(400).json({
-        message: 'Send all required fields: nome, sobrenome, email, planta, acessoKPI, foto',
+      // Validate required fields
+      if (!login || !senha || !nome || !sobrenome || !email || !planta || !cargo || acessoKPI === undefined || admin === undefined || foto === undefined) {
+          return res.status(400).json({
+              message: 'Preencha todos os campos',
+          });
+      }
+
+      // Check if the username already exists
+      const existingUser = await UsuarioModel.findOne({ login });
+      if (existingUser) {
+          return res.status(400).json({ message: 'Login ja existe' });
+      }
+
+      // Hash the password
+      const hashedPassword = await bcrypt.hash(senha, 10);
+
+      // Create a new user
+      const newUser = await UsuarioModel.create({
+          login,
+          senha: hashedPassword,
+          nome,
+          sobrenome,
+          email,
+          planta,
+          acessoKPI,
+          foto,
+          admin,
+          cargo
       });
-    }
 
-    const newUsuario = await UsuarioModel.create({
-      login,
-      senha,
-      nome,
-      sobrenome,
-      email,
-      planta,
-      acessoKPI,
-      foto,
-      admin,
-      cargo
-    });
-
-    return response.status(201).json(newUsuario);
+      res.status(201).json({ message: 'Usuario cadastrado com sucesso' });
   } catch (error) {
-    console.error(error.message);
-    response.status(500).json({ message: error.message });
+      console.error(error.message);
+      res.status(500).json({ message: 'Erro no servidor' });
   }
 });
 
-// GET route for retrieving all usuarios
+router.post('/login', async (req, res) => {
+  try {
+      const {login, senha} = req.body;
+
+      // Find the user by username
+      const user = await UsuarioModel.findOne({ login });
+      if (!user) {
+          return res.status(401).json({ message: 'pau no cu do first' });
+      }
+
+      // Compare the entered password with the hashed password in the database
+      const passwordMatch = await UsuarioModel.findOne({ senha });
+      if (!passwordMatch) {
+          return res.status(401).json({ message: 'Usuario ou senha invalido' });
+      }
+
+      // Generate a JWT token
+      const token = jwt.sign({ login: user.login }, 'ehosguri');
+
+      res.status(200).json({ token });
+  } catch (error) {
+      console.error(error.message);
+      res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+// GET Todos usuarios
 router.get('/', async (request, response) => {
   try {
     const usuarios = await UsuarioModel.find({});
@@ -60,7 +98,7 @@ router.get('/', async (request, response) => {
   }
 });
 
-// GET route for retrieving a specific usuario by ID
+// GET Usuario especifico
 router.get('/:id', async (request, response) => {
   try {
     const { id } = request.params;
@@ -78,7 +116,7 @@ router.get('/:id', async (request, response) => {
   }
 });
 
-// PUT route for updating a specific usuario by ID
+// PUT Usuario especifico
 router.put('/:id', async (request, response) => {
   try {
     const { id } = request.params;
@@ -98,7 +136,7 @@ router.put('/:id', async (request, response) => {
   }
 });
 
-// DELETE route for deleting a specific usuario by ID
+// DELETE usuario por ID
 router.delete('/:id', async (request, response) => {
   try {
     const { id } = request.params;

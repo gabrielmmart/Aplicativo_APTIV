@@ -4,6 +4,7 @@ const usuarioSchema = mongoose.Schema({
   login:{ 
     type: String,
     required: true,
+    unique: true
   },
   senha:{ 
     type: String,
@@ -19,7 +20,8 @@ const usuarioSchema = mongoose.Schema({
   },
   email:{
     type: String,
-    required: true 
+    required: true,
+    unique: true
   },
   cargo:{
     type: String,
