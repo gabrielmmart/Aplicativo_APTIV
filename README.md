@@ -6,7 +6,7 @@ Criado para auxiliar o acesso aos benefícios fornecidos pela empresa para os fu
 
 # Como executar o app
 
-Para se conectar ao banco, adapte o .env com o url de seu banco mongo.
+Para se conectar ao banco, adapte o config.js com o url de seu banco mongo.
 
    
 - Iniciar o backend:
