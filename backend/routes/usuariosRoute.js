@@ -76,18 +76,17 @@ router.post('/login', async (req, res) => {
     if (user.admin) {
       // Generate a JWT token for admin
       const token = jwt.sign({ login: user.login, isAdmin: true }, 'ehosguri');
-      res.status(200).json({ token, isAdmin: true });
+      res.status(200).json({ token, isAdmin: true, user }); // Include user details in the response
     } else {
       // Generate a regular user JWT token
       const token = jwt.sign({ login: user.login, isAdmin: false }, 'ehosguri');
-      res.status(200).json({ token, isAdmin: false });
+      res.status(200).json({ token, isAdmin: false, user }); // Include user details in the response
     }
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ message: 'Erro no servidor' });
   }
 });
-
 
 
 // GET Todos usuarios
@@ -160,5 +159,35 @@ router.delete('/:id', async (request, response) => {
     response.status(500).json({ message: error.message });
   }
 });
+
+// Route to get user details based on the token
+router.get('/user-details', async (req, res) => {
+  try {
+    const token = req.header('Authorization').replace('Bearer ', '');
+    
+    // Decode the token to get user information
+    const decoded = jwt.verify(token, 'ehosguri');
+
+    // Find the user by login (or any other unique identifier)
+    const user = await UsuarioModel.findOne({ login: decoded.login });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Send the user details in the response
+    res.status(200).json({
+      login: user.login,
+      nome: user.nome,
+      sobrenome: user.sobrenome,
+      email: user.email,
+      // Add other user details as needed
+    });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ message: 'Error fetching user details' });
+  }
+});
+
 
 export default router;

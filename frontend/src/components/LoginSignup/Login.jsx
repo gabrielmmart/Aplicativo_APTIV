@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../UserContextF/UserContext';
 
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
+  const { login } = useUser();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,16 +20,14 @@ function Login() {
   }, []); 
 
   const handleLogin = async (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
+    e.preventDefault();
   
     try {
-      // Check if either username or password is empty
       if (!username || !password) {
         console.error('Username and password are required');
         return;
       }
   
-      // Make a POST request to your backend login route
       const response = await fetch('http://localhost:5555/Usuarios/login', {
         method: 'POST',
         headers: {
@@ -37,27 +37,21 @@ function Login() {
       });
   
       if (response.ok) {
-        // Successful login
         const data = await response.json();
         console.log('Data from server:', data);
   
-        if (isAdmin) {
-          if (data.isAdmin) {
-            navigate('/Admin');
-          } else {
-            console.log('Admin login is not allowed');
-          }
+        if (isAdmin && data.isAdmin) {
+          login(data); // Store user data in context
+          navigate('/Admin');
         } else {
+          login(data); // Store user data in context
           navigate('/Main');
         }
       } else {
-        // Unsuccessful login
         console.error('Invalid username or password');
-        // Optionally, display an error message to the user or handle it in another way
       }
     } catch (error) {
       console.error('Error during login:', error.message);
-      // Handle other errors (e.g., network issues)
     }
   };
   
