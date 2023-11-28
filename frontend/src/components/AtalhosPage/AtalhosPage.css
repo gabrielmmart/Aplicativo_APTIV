@@ -8,13 +8,14 @@
   margin-top: 70px;
 }
 
+
 .mais {
   color: orangered;
-  margin-left: 320px;
+  padding-left: 40px;
+  top: 50%
 }
 .mais:hover {
   color: darkred;
-  margin-left: 320px;
 }
 
 .atalhos-container {
@@ -52,20 +53,26 @@
 
 .texto {
   flex: 2;
-  padding: 10px;
+  padding: 0px;
   margin-left: 20px;
+}
+
+.atalho-item {
+  position: relative;
 }
 
 .icons {
-  flex: 1;
+  position: absolute;
+  top: 20;
+  right: 8px;
   display: flex;
-  justify-content: flex-end;
 }
 
 .icon {
-  color: white;
-  margin-left: 20px;
+  margin-right: 20px; /* Adjust this value based on your preference */
+  color: white
 }
+
 .icon:hover {
   color: rgb(197, 197, 197)
 }

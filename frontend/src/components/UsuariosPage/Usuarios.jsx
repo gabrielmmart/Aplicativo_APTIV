@@ -28,11 +28,14 @@ function UsuarioPage() {
       
       <div className="usuario-app-page">
         
+        
+    
+        <h1>Usuarios cadastrados
         <Link to='/Usuarios/Create' className='mais'> 
           <FaPlusSquare size={50} />
         </Link>
-    
-        <h1>Usuarios cadastrados</h1>
+        </h1>
+        
         <div className="usuarios-container">
           <table className="usuarios-table">
             <thead>

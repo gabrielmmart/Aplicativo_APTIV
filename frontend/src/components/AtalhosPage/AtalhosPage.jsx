@@ -28,11 +28,14 @@ function AtalhosPage() {
       
       <div className="app-page">
         
-        <Link to='/Atalhos/Create' className='mais'> 
-          <FaPlusSquare size={50} />
-        </Link>
+        
     
-        <h1>Atalhos cadastrados</h1>
+        <h1 className='titulo'>Atalhos cadastrados 
+          <Link to='/Atalhos/Create' className='mais'> 
+            <FaPlusSquare size={50} />
+          </Link>
+        </h1>
+       
         <div className="atalhos-container">
           {atalhos &&
             atalhos.map((atalho) => (
